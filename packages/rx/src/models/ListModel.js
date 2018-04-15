@@ -12,5 +12,5 @@ export default class ListModel {
     this.name = list.name;
     this.positionId = list.positionId;
     this.status = list.status;
+    this.cards = list.cards;
   }
-}

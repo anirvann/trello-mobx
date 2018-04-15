@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AppBar from 'material-ui/AppBar';
 
 import Board from './Board';
+import SideBar from './SideBar';
 
 const styles = {
   app: { display: 'flex', flexDirection: 'column' },
@@ -10,7 +11,8 @@ const styles = {
     flexDirection: 'row',
     flexWrap: 'nowrap',
     justifyContent: 'flex-start',
-    marginTop: '48px'
+    marginTop: '48px',
+    height: 'calc(100vh - 48px)'
   }
 };
 
@@ -26,6 +28,7 @@ class App extends Component {
         />
         <div className="main" style={styles.main}>
           <Board />
+          <SideBar />
         </div>
       </div>
     );

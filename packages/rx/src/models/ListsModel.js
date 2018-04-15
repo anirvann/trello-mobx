@@ -4,47 +4,28 @@ import { request } from 'graphql-request';
 import Queries from '../queries';
 import ListModel from './ListModel';
 
-export default class ListsModel {
+export default class ListsModel{
   @observable lists = [];
 
-  constructor() {
+  constructor(client){
+    this.client = client;
     this.fetchLists();
   }
 
   @action
-  fetchLists() {
-
-    /* let data = [
-      {
-        "listId": 4,
-        "name": "BACKLOG",
-        "positionId": 4,
-        "status": "ACTIVE"
-      },
-      {
-        "listId": 5,
-        "name": "FUTURE",
-        "positionId": 5,
-        "status": "INACTIVE"
-      },
-      {
-        "listId": 7,
-        "name": "AGILE",
-        "positionId": 7,
-        "status": "ACTIVE"
-      }
-    ]; */
-    request('/api', Queries.fetchAllTasks)
-    .then(data => (
-        data.lists.filter(list => list.status === 'ACTIVE')
+  fetchLists(){
+    this.client.query({ query: Queries.fetchAllLists })
+    .then(result => (
+        result.data.lists.map(list => ({...list,...{ cards: result.data.cards.filter(card => card.status === 'ACTIVE' && card.listId === list.listId)}}))
     ))
-    .then( lists => lists.map( list => 
+    .then(lists => lists.filter(list => list.status === 'ACTIVE'))
+    .then(lists => lists.map( list => 
       this.lists.push(new ListModel(list)
     )))
   }
 
   @action
-  addList(list) {
+  addList(list){
     this.lists.push(list);
   }
 }

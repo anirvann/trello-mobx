@@ -23,7 +23,8 @@ app.use(require('./src/v1'));
 
 app.use('/api', graphqlHTTP({
   schema: graphqlSchema,
-  graphiql: ((process.NODE_ENV !== 'production') ? true : false),
+  // graphiql: ((process.NODE_ENV !== 'production') ? true : false),
+  graphiql: true,
   /*rootValue: {},
   context: {},
   pretty: false,

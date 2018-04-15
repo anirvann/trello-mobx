@@ -31,10 +31,13 @@
     "express-graphql": "^0.6.11",
     "graphql": "^0.13.1",
     "graphql-request": "^1.4.1",
+    "graphql-subscriptions": "^0.5.8",
     "log4js": "^2.4.1",
     "mongoose": "^5.0.0-rc1",
     "mongoose-auto-increment": "^5.0.1",
-    "morgan": "^1.9.0"
+    "morgan": "^1.9.0",
+    "redis": "^2.8.0",
+    "socket.io": "^2.0.4"
   },
   "devDependencies": {
     "chai": "^4.1.2",
