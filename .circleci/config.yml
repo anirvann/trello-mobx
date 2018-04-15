@@ -14,11 +14,12 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mongo:3.4.4
 
-    working_directory: packages/ui
-
     steps:
       - checkout
 
+      - persist_to_workspace:
+          root: /packages/ui
+          path: .
       # Download and cache dependencies
       - restore_cache:
           keys:
