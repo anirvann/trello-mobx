@@ -6,6 +6,7 @@ export default class ListModel {
   @observable name;
   @observable positionId;
   @observable status;
+  @observable cards;
 
   constructor(list) {
     this.listId = list.listId;
@@ -14,3 +15,4 @@ export default class ListModel {
     this.status = list.status;
     this.cards = list.cards;
   }
+}
